@@ -1,8 +1,17 @@
 import React from 'react'
+import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
+import CommonLayout from './components/CommonLayout'
+import Smartphones from './pages/Smartphones'
 
 const App = () => {
   return (
-    <div className='bg-blue-400'>App</div>
+    <BrowserRouter>
+      <Routes>
+        <Route path='/' element={<CommonLayout/>}>
+          <Route index element={<Smartphones/>}/>
+        </Route>
+      </Routes>
+    </BrowserRouter>
   )
 }
 
