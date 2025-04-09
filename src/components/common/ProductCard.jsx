@@ -1,8 +1,6 @@
 import React, { useContext } from "react";
 import Button from "./Button";
 import { useNavigate } from "react-router-dom";
-import { CartContext } from "../../contexts/CartContext";
-import { AddToCart, ExistanceInCart } from "../../utils/Utils";
 
 const ProductCard = ({
   pid,
@@ -14,11 +12,10 @@ const ProductCard = ({
   pageLink = "/error",
 }) => {
   const navigate = useNavigate();
-  const { cart, setCart } = useContext(CartContext);
 
   return (
     <div
-      className="w-[21dvw] p-5 rounded-xl bg-white dark:bg-gray-700 dark:text-lightPink font-dmSans mx-auto shadow-xl cursor-pointer"
+      className="w-[15dvw] h-fit p-5 rounded-xl bg-white dark:text-lightPink font-dmSans mx-auto shadow-xl cursor-pointer"
       onClick={(e) => {
         e.stopPropagation();
         navigate(pageLink);
@@ -43,19 +40,6 @@ const ProductCard = ({
               return; //buying function goes here
             }}
             label={"Buy Now"}
-            id={pid}
-          />
-          <Button
-            colorClass={`${
-              ExistanceInCart(cart, pid) ? "bg-green-500" : "bg-pink-800"
-            }`}
-            clickHandler={(e) => {
-              e.stopPropagation();
-              AddToCart(cart, setCart, pid);
-            }}
-            label={`${
-              ExistanceInCart(cart, pid) ? "Added to cart" : "Add to cart"
-            }`}
             id={pid}
           />
         </div>

@@ -1,18 +1,21 @@
-import React from 'react'
-import { BrowserRouter, Route, Router, Routes } from 'react-router-dom'
-import CommonLayout from './components/CommonLayout'
-import Smartphones from './pages/Smartphones'
+import React from "react";
+import { BrowserRouter, Route, Router, Routes } from "react-router-dom";
+import CommonLayout from "./components/CommonLayout";
+import Smartphones from "./pages/Smartphones";
+import { ProductProvider } from "./contexts/ProductContext";
 
 const App = () => {
   return (
-    <BrowserRouter>
-      <Routes>
-        <Route path='/' element={<CommonLayout/>}>
-          <Route index element={<Smartphones/>}/>
-        </Route>
-      </Routes>
-    </BrowserRouter>
-  )
-}
+    <ProductProvider>
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<CommonLayout />}>
+            <Route index element={<Smartphones />} />
+          </Route>
+        </Routes>
+      </BrowserRouter>
+    </ProductProvider>
+  );
+};
 
-export default App
+export default App;
